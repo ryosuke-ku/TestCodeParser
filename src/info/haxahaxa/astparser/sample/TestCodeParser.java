@@ -30,8 +30,8 @@ public class TestCodeParser {
 	@SuppressWarnings("deprecation")
 	public static void main(String[] args) throws Exception {
 
-		String dir_path = "C:\\Users\\ryosuke-ku\\Desktop\\NiCad-5.1\\systems\\apache_ant_maven\\maven\\maven-artifact\\src\\test\\java\\org\\apache\\maven\\artifact\\versioning";  //検索開始したいフォルダのPath
-		String extension = ".java";   //検索したいTestファイルの拡張子(今回は"<クラス名+Test>"をテストコードとする)
+		String dir_path = "C:\\Users\\ryosuke-ku\\Desktop\\NiCad-5.1\\systems\\maven";  //検索開始したいフォルダのPath
+		String extension = "Test.java";   //検索したいTestファイルの拡張子(今回は"<クラス名+Test>"をテストコードとする)
 
 		List<String> data;
 		data = file_search(dir_path, extension);
@@ -41,11 +41,12 @@ public class TestCodeParser {
 
 		for(int i=0;i<data.size();i++) {
 
-			System.out.println("テストファイルのPath["+i+ "]--> "+ data.get(i));
+			System.out.println(data.get(i));
+//			System.out.println("テストファイルのPath["+i+ "]--> "+ data.get(i));
 
 			FileReader f = null;
 			f = new FileReader(data.get(i));
-			s.loadJavaFile(f);
+//			s.loadJavaFile(f);
 
 			SourceFile sourceFile = new SourceFile(data.get(i));
 			CompilationUnit unit;
@@ -72,7 +73,7 @@ public class TestCodeParser {
 			// 解析実行
 			unit.accept(visitor);
 
-			System.out.println("\n");
+			System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
 		}
 	}
@@ -101,11 +102,11 @@ public class TestCodeParser {
 	}
 
 
-
+	static List<String> FilePath = new ArrayList<>();
 	public static List<String> file_search(String path, String extension){
 		File dir = new File(path);
 		File files[] = dir.listFiles();
-		List<String> FilePath = new ArrayList<>();
+
 
 
 		for(int i=0; i<files.length; i++){
