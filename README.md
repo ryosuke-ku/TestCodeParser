@@ -1,1 +1,1 @@
-satanabeによるASTParserの紹介
+テストコードを構文解析するツール
