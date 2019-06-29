@@ -31,7 +31,7 @@ public class TestCodeParser {
 	public static void main(String[] args) throws Exception {
 
 		String dir_path = "C:\\Users\\ryosuke-ku\\Desktop\\NiCad-5.1\\systems\\maven";  //検索開始したいフォルダのPath
-		String extension = "Test.java";   //検索したいTestファイルの拡張子(今回は"<クラス名+Test>"をテストコードとする)
+		String extension = ".java";   //検索したいTestファイルの拡張子(今回は"<クラス名+Test>"をテストコードとする)
 
 		List<String> data;
 		data = file_search(dir_path, extension);
@@ -41,7 +41,7 @@ public class TestCodeParser {
 
 		for(int i=0;i<data.size();i++) {
 
-			System.out.println(data.get(i));
+			System.out.println(data.get(i).substring(47-1));
 //			System.out.println("テストファイルのPath["+i+ "]--> "+ data.get(i));
 
 			FileReader f = null;
